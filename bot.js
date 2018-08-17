@@ -11,7 +11,7 @@ const prefix = 'W';
 
 client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
-client.user.setGame(`$$play`,"https://www.twitch.tv/Anime & Games")
+client.user.setGame(`Wplay`,"https://www.twitch.tv/Anime & Games")
   console.log('')
   console.log('')
   console.log('╔[═════════════════════════════════════════════════════════════════]╗')
