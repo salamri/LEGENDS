@@ -294,4 +294,4 @@ client.on("message", message => { //help
 
 
 
-client.login(process.env.BOT_TOKEN3); 
+client.login(process.env.BOT_TOKEN2); 
