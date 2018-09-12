@@ -205,6 +205,6 @@ function isYoutube(str) {
 .setFooter('Thank You For use this bot ! .')
       message.channel.send({embed});
      }
-    });
+    }); 
 
  client.login(process.env.BOT_TOKEN2);
