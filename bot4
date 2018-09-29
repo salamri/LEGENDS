@@ -30,4 +30,4 @@ message.author.send(`**مدة الرابط : يـوم
     }
 });
 
- client.login(process.env.BOT_TOKEN5);
+ client.login(process.env.BOT_TOKEN4);
