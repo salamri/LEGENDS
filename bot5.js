@@ -65,62 +65,33 @@ message.guild.members.forEach(m => {
 
 
 
-const cuttweet = [
-    'كت تويت ‏| تخيّل لو أنك سترسم شيء وحيد فيصبح حقيقة، ماذا سترسم؟',
-    'كت تويت | أكثر شيء يُسكِت الطفل برأيك؟',
-    'كت تويت | الحرية لـ ... ؟',
-    'كت تويت | قناة الكرتون المفضلة في طفولتك؟',
-    'كت تويت ‏| كلمة للصُداع؟',
-    'كت تويت ‏| ما الشيء الذي يُفارقك؟',
-    'كت تويت | موقف مميز فعلته مع شخص ولا يزال يذكره لك؟',
-    'كت تويت ‏| أيهما ينتصر، الكبرياء أم الحب؟',
-    'كت تويت | بعد ١٠ سنين ايش بتكون ؟',
-    'كت تويت ‏| مِن أغرب وأجمل الأسماء التي مرت عليك؟',
-    '‏كت تويت | عمرك شلت مصيبة عن شخص برغبتك ؟',
-    'كت تويت | أكثر سؤال وجِّه إليك مؤخرًا؟',
-    '‏كت تويت | ما هو الشيء الذي يجعلك تشعر بالخوف؟',
-    '‏كت تويت | وش يفسد الصداقة؟',
-    '‏كت تويت | شخص لاترفض له طلبا ؟',
-    '‏كت تويت | كم مره خسرت شخص تحبه؟.',
-    '‏كت تويت | كيف تتعامل مع الاشخاص السلبيين ؟',
-    '‏كت تويت | كلمة تشعر بالخجل اذا قيلت لك؟',
-    '‏كت تويت | جسمك اكبر من عٌمرك او العكسّ ؟!',
-    '‏كت تويت |أقوى كذبة مشت عليك ؟',
-    '‏كت تويت | تتأثر بدموع شخص يبكي قدامك قبل تعرف السبب ؟',
-    'كت تويت | هل حدث وضحيت من أجل شخصٍ أحببت؟',
-    '‏كت تويت | أكثر تطبيق تستخدمه مؤخرًا؟',
-    '‏كت تويت | ‏اكثر شي يرضيك اذا زعلت بدون تفكير ؟',
-    '‏كت تويت | وش محتاج عشان تكون مبسوط ؟',
-    '‏كت تويت | مطلبك الوحيد الحين ؟',
-    '‏كت تويت | هل حدث وشعرت بأنك ارتكبت أحد الذنوب أثناء الصيام؟',
-]
+
 
 client.on('message', message => {
-  if (message.content.startsWith("!كت تويت")) {
-               if(!message.channel.guild) return message.reply('** This command only for servers**');
- var embed = new Discord.RichEmbed()
- .setColor('RANDOM')
-  .setThumbnail(message.author.avatarURL) 
-.addField('لعبه كت تويت' ,
- `${cuttweet[Math.floor(Math.random() * cuttweet.length)]}`)
- message.channel.sendEmbed(embed);
- console.log('[id] Send By: ' + message.author.username)
-   }
-});
-
-const secreT = [
- "**الحياة بكل ما فيها تقف دائمًا على حد الوسطية بين اتزان المعنى وضده من حب وكره وحق وباطل وعدل وظلم**.",
- "**كى تعيش عليك ان تتقن فن التجاهل باحتراف**.",
- "**لا تحزن على من اشعرك بان طيبتك غباء امام وقاحته**.",
- "**هناك من يحلم بالنجاح وهناك من يستيقظ باكرا لتحقيقه**.",
- "**ان تعالج ألمك بنفسك تلك هى القوة**.", 
- "**الجميع يسمع ما تقول والاصدقاء ينصتون لما تقول وافضل الاصدقاء ينصتون لما اخفاه سكوتك**.", 
- "**انتهى زمن الفروسية ، لم تنقرض الخيول بل انقرض الفرسان**.", 
- "**ان تكون اخرسا عاقلا خير من ان تكون نطوقا جهولا**.", 
- "**المناقشات العقيمة لا تنجب افكارا**.", 
- "**نحن نكتب ما لا نستطيع ان نقول وما نريد ان يكون**.", 
- "**نحن نكتب ما لا نستطيع ان نقول وما نريد ان يكون**.", 
-]
+   if (message.content === "!server") {
+       if (!message.channel.guild) return
+       var verificationLevel = message.guild.verificationLevel;
+       const verificationLevels = ['None','Low','Meduim','High','Extreme'];
+       var Y1 = message.guild.createdAt.getFullYear() - 2000
+       var M2 = message.guild.createdAt.getMonth()
+       var D3 = message.guild.createdAt.getDate()
+       const xNiTRoZ = new Discord.RichEmbed()
+        .setAuthor(message.author.username , message.author.avatarURL)
+        .setColor('RANDOM')
+        .setTimestamp()
+        .setTitle(message.guild.name,message.guild.iconURL)
+        .addField(':id: Server ID',`${message.guild.id}`,true)
+        .addField(':date: Created on',D3 + '.' + M2 + '.' + Y1,true)             
+        .addField(':crown: Server Owner',`${message.guild.owner.user.username}#${message.guild.owner.user.discriminator}`)             
+        .addField(':busts_in_silhouette: Members ' + ` [${message.guild.memberCount}] `,'Online '+`[ ${message.guild.members.filter(m=>m.presence.status == 'online','idle','dnd').size} ]`+ ','+'Offline '+`[ ${message.guild.members.filter(m=>m.presence.status == 'offline').size} ]`,true)
+        .addField(':speech_balloon: Channels' +' '+message.guild.channels.size+' ',`Text [ ${message.guild.channels.filter(m => m.type === 'text').size} ]`+', '+`Voice [ ${message.guild.channels.filter(m => m.type === 'voice').size} ]`,true)
+        .addField(':earth_asia: Region',message.guild.region)
+        .addField(':ribbon: Server Emojis',`${message.guild.emojis.size}`,true)
+        .addField(':construction: Verification Level',`${verificationLevels[message.guild.verificationLevel]}`,true)
+        .addField(':closed_lock_with_key: Roles  '+message.guild.roles.size+' ','Type `!roles` To See The Server Roles!')
+        message.channel.send({embed:xNiTRoZ});
+    }
+   });
 
 
  client.login(process.env.BOT_TOKEN5);
