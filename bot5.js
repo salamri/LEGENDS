@@ -64,5 +64,33 @@ message.guild.members.forEach(m => {
 
 
 
+client.on('message', message => {
+  if (message.content.startsWith("!كت تويت")) {
+               if(!message.channel.guild) return message.reply('** This command only for servers**');
+ var embed = new Discord.RichEmbed()
+ .setColor('RANDOM')
+  .setThumbnail(message.author.avatarURL) 
+.addField('لعبه كت تويت' ,
+ `${cuttweet[Math.floor(Math.random() * cuttweet.length)]}`)
+ message.channel.sendEmbed(embed);
+ console.log('[id] Send By: ' + message.author.username)
+   }
+});
+
+const secreT = [
+ "**الحياة بكل ما فيها تقف دائمًا على حد الوسطية بين اتزان المعنى وضده من حب وكره وحق وباطل وعدل وظلم**.",
+ "**كى تعيش عليك ان تتقن فن التجاهل باحتراف**.",
+ "**لا تحزن على من اشعرك بان طيبتك غباء امام وقاحته**.",
+ "**هناك من يحلم بالنجاح وهناك من يستيقظ باكرا لتحقيقه**.",
+ "**ان تعالج ألمك بنفسك تلك هى القوة**.", 
+ "**الجميع يسمع ما تقول والاصدقاء ينصتون لما تقول وافضل الاصدقاء ينصتون لما اخفاه سكوتك**.", 
+ "**انتهى زمن الفروسية ، لم تنقرض الخيول بل انقرض الفرسان**.", 
+ "**ان تكون اخرسا عاقلا خير من ان تكون نطوقا جهولا**.", 
+ "**المناقشات العقيمة لا تنجب افكارا**.", 
+ "**نحن نكتب ما لا نستطيع ان نقول وما نريد ان يكون**.", 
+ "**نحن نكتب ما لا نستطيع ان نقول وما نريد ان يكون**.", 
+]
+
+
 
  client.login(process.env.BOT_TOKEN5);
