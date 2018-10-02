@@ -35,41 +35,6 @@ message.author.send(`**مدة الرابط : يـوم
 
 
 
-client.on("message", async message => {
-        if(!message.channel.guild) return;
- var prefix= "!";
-        if(message.content.startsWith(prefix + 'server')) {
-        let guild = message.guild
-        let channel = message.channel
-        let guildicon = guild.icon_url
-        let members = guild.memberCount
-        let bots = guild.members.filter(m => m.user.bot).size
-        let humans = members - bots
-        let allchannels = guild.channels.size
-        let textchannels = guild.channels.filter(e => e.type === "text")
-        let voicechannels = guild.channels.filter(e => e.type === "voice")
-          var embed = new Discord.RichEmbed()
-          .setColor("#000000")
-          .setTitle(`معلومات عن السيرفر`)
-          .setDescription(`معلومات عن : ${guild.name}`)
-          .addField("صاحب السيرفر :", `${guild.owner}`, true)
-          .addField("أيدي السيرفر :", `${guild.id}`, true)
-          .addField("موقع السيرفر :", `${guild.region}`, true)
-          .addField("مستوى حماية السيرفر :", `${guild.verificationLevel}`, true)
-          .addField("عدد الرومات الصوتية :", `${voicechannels.size}`, true)
-          .addField("عدد الرومات الكتابية :", `${textchannels.size}`, true)
-          .addField("عدد اعضاء السيرفر :", `${members}`, true)
-          .addField("عدد البوتات :", `${bots}`, true)
-          .addField("عدد الاشخاص :", `${humans}`, true)
-          .addField("عدد رتب السيرفر :", `${guild.roles.size}`, true)
-          .addField(`أيموجيات الخاصة بالسيرفر : (${guild.emojis.size})`, `- ${guild.emojis.array()}`, true)
-          .setFooter(`تم انشاء هذه السيرفر في: ${guild.createdAt}`)
- 
-       message.channel.send({ embed: embed });
- 
-      }
-    });
-
 
 
 client.on('message', message => {
@@ -95,32 +60,6 @@ message.guild.members.forEach(m => {
  
 });
 
-
-
-
-lient.on('message', message => {
-    if(!message.channel.guild) return; 
-if(message.content.startsWith(prefix + 'delete-world')) {
-if(!message.channel.guild) return message.channel.send('**هذا الأمر فقط للسيرفرات | ❌**').then(m => m.delete(5000));
-// if(!message.member.hasPermission('ADMINISTRATOR')) return message.channel.send('**يجب ان تمتلك صلاحيه ``ADMINISTRATOR`` | ❌'); 
-message.react('✅')
-message.react('❌')
-.then(() => message.react('✅'))
-.then(() =>message.react('❌'))
-
-let reaction1Filter = (reaction, user) => reaction.emoji.name === '✅' && user.id === message.author.id;
-let reaction2Filter = (reaction, user) => reaction.emoji.name === '❌' && user.id === message.author.id;
-
-let reaction1 = message.createReactionCollector(reaction1Filter, { time: 12000 });
-let reaction2 = message.createReactionCollector(reaction2Filter, { time: 12000 });
-reaction1.on("collect", r => {
-    message.channel.send({file : "https://cdn.discordapp.com/attachments/456652875150655489/489905534066098196/deleted.png"})
-})
-reaction2.on("collect", r => {
-message.channel.send('**تم الغاء عمليه مسح العالم بنجاح | ✅ **')
-})
-}
-});
 
 
 
